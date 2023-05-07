@@ -1,0 +1,115 @@
+﻿IncludeFile "UI\FrameDef\Glue\BattleNetTemplates.fdf",
+
+Frame "TEXT" "FRAMEWORK_BLOCK" {
+    Text "",
+}
+
+Frame "TEXT" "FRAMEWORK_TEXT" {
+    UseActiveContext,
+    DecorateFileNames,
+    FontFlags "FIXEDSIZE",
+    FontColor 1.0 1.0 1.0 1.0,
+    FontShadowColor 0.0 0.0 0.0 0.8,
+    FontShadowOffset 0.0004 -0.0004,
+    Text "",
+}
+
+Frame "TEXTAREA" "FRAMEWORK_TEXTAREA" {
+    DecorateFileNames,
+    TextAreaLineHeight 0.015,
+    TextAreaLineGap 0.00,
+    TextAreaInset 0.01,
+    TextAreaScrollBar "FRAMEWORK_TEXTAREA_SCROLLBAR",
+   Frame "SCROLLBAR" "FRAMEWORK_TEXTAREA_SCROLLBAR" INHERITS WITHCHILDREN "BattleNetScrollBarTemplate" {
+    }
+    ControlBackdrop "FRAMEWORK_TEXTAREA_BACKDROP",
+   Frame "BACKDROP" "FRAMEWORK_TEXTAREA_BACKDROP" INHERITS "BattleNetControlBackdropTemplate" {
+    }
+}
+
+Frame "SPRITE" "FRAMEWORK_MODEL" {}
+
+Frame "BACKDROP" "FRAMEWORK_BACKDROP" {
+    BackdropBlendAll,
+}
+Frame "BACKDROP" "FRAMEWORK_BACKDROP_TILE" {
+    BackdropTileBackground,
+    BackdropBlendAll,
+}
+Frame "BACKDROP" "FRAMEWORK_BACKDROP_NIL" {
+    BackdropTileBackground,
+    BackdropBackground "UI\Widgets\BattleNet\bnet-tooltip-background.blp",
+    BackdropCornerFlags "UL|UR|BL|BR|T|L|B|R",
+    BackdropCornerSize 0.012,
+    BackdropBackgroundInsets 0.004f 0.004f 0.004f 0.004f,
+    BackdropEdgeFile "Framework\ui\nil.tga",
+    BackdropBlendAll,
+}
+Frame "BACKDROP" "FRAMEWORK_BACKDROP_TOOLTIP" {
+    BackdropTileBackground,
+    BackdropBackground "UI\Widgets\BattleNet\bnet-tooltip-background.blp",
+    BackdropCornerFlags "UL|UR|BL|BR|T|L|B|R",
+    BackdropCornerSize 0.012,
+    BackdropBackgroundSize 0.032,
+    BackdropBackgroundInsets 0.004f 0.004f 0.004f 0.004f,
+    BackdropEdgeFile "UI\Widgets\ToolTips\Human\human-tooltip-border.blp",
+    BackdropBlendAll,
+}
+Frame "BACKDROP" "FRAMEWORK_BACKDROP_INPUTBOX" {
+    BackdropTileBackground,
+    BackdropBackground "UI\Widgets\EscMenu\Human\quest-normal-background.blp",
+    BackdropCornerFlags "UL|UR|BL|BR|T|L|B|R",
+    BackdropCornerSize 0.012,
+    BackdropBackgroundSize 0.032,
+    BackdropEdgeFile "UI\Widgets\BattleNet\bnet-inputbox-border.blp",
+    BackdropBlendAll,
+}
+Frame "BACKDROP" "FRAMEWORK_BACKDROP_SCROLLBAR" {
+    BackdropTileBackground,
+    BackdropBackground  "UI\Widgets\Glues\GlueScreen-Scrollbar-BackdropBackground.blp",
+    BackdropCornerFlags "UL|UR|BL|BR|T|L|B|R",
+    BackdropCornerSize  0.008,
+    BackdropBackgroundInsets 0.002f 0.002f 0.002f 0.002f,
+    BackdropEdgeFile "UI\Widgets\Glues\GlueScreen-Scrollbar-BackdropBorder.blp",
+    BackdropBlendAll,
+}
+Frame "BACKDROP" "FRAMEWORK_BACKDROP_SLIDER" {
+    BackdropTileBackground,
+    BackdropBackground  "UI\Widgets\Glues\GlueScreen-Slider-BackdropBackground.blp",
+    BackdropCornerFlags "UL|UR|BL|BR|T|L|B|R",
+    BackdropCornerSize  0.008,
+    BackdropBackgroundInsets 0.004f 0.004f 0.004f 0.004f,
+    BackdropEdgeFile  "UI\Widgets\Glues\GlueScreen-Slider-BackdropBorder.blp",
+    BackdropBlendAll,
+}
+
+Frame "HIGHLIGHT" "FRAMEWORK_HIGHLIGHT_HUMAN_QUEST" {
+    HighlightType "FILETEXTURE",
+    HighlightAlphaFile "UI\Widgets\EscMenu\Human\quest-button-highlight.blp",
+    HighlightAlphaMode "ADD",
+}
+Frame "HIGHLIGHT" "FRAMEWORK_HIGHLIGHT_HUMAN_OPTIONS" {
+    HighlightType "FILETEXTURE",
+    HighlightAlphaFile "UI\Widgets\EscMenu\Human\human-options-button-highlight.blp",
+    HighlightAlphaMode "ADD",
+}
+Frame "HIGHLIGHT" "FRAMEWORK_HIGHLIGHT_ORC_OPTIONS" {
+    HighlightType "FILETEXTURE",
+    HighlightAlphaFile "UI\Widgets\EscMenu\Orc\orc-options-button-highlight.blp",
+    HighlightAlphaMode "ADD",
+}
+Frame "HIGHLIGHT" "FRAMEWORK_HIGHLIGHT_NIGHTELF_OPTIONS" {
+    HighlightType "FILETEXTURE",
+    HighlightAlphaFile "UI\Widgets\EscMenu\NightElf\nightelf-options-button-highlight.blp",
+    HighlightAlphaMode "ADD",
+}
+Frame "HIGHLIGHT" "FRAMEWORK_HIGHLIGHT_UNDEAD_OPTIONS" {
+    HighlightType "FILETEXTURE",
+    HighlightAlphaFile "UI\Widgets\EscMenu\Undead\undead-options-button-highlight.blp",
+    HighlightAlphaMode "ADD",
+}
+Frame "HIGHLIGHT" "FRAMEWORK_HIGHLIGHT_HUMAN_CONSOLE" {
+    HighlightType "FILETEXTURE",
+    HighlightAlphaFile "UI\Widgets\Console\Human\human-console-button-highlight.blp",
+    HighlightAlphaMode "ADD",
+}
