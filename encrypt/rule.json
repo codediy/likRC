@@ -146,7 +146,7 @@
   },
   {
     "file": "foundation/assets",
-    "repl": "^function (A\\w+)\\(",
+    "force": "^function (A\\w+)\\(",
     "del": ""
   },
   {
