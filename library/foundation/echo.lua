@@ -2,10 +2,10 @@
 --- * 不支持异步，切无法释放资源，故不推荐使用
 --- * 推荐自己编写UI
 ---@param msg string|string[]
----@param whichPlayer Player 可选，打印给某玩家
----@param duration number
----@param x number 可选，屏幕x处
----@param y number 可选，屏幕y处
+---@param whichPlayer Player | nil 可选，打印给某玩家
+---@param duration number | nil 可选 显示时间
+---@param x number | nil 可选，屏幕x处
+---@param y number | nil 可选，屏幕y处
 function echo(msg, whichPlayer, duration, x, y)
     local _e = function(m)
         duration = duration or 0

@@ -254,8 +254,8 @@ end
 
 ---@private
 ---@param key string
----@param variety any
----@param duration number
+---@param variety any 
+---@param duration number | nil
 ---@return self,boolean|any,boolean
 function class:PROP(key, variety, duration)
     if (key == nil and variety == nil and duration == nil) then
@@ -408,7 +408,7 @@ end
 --- 内部参
 ---@param key string
 ---@param variety any
----@param duration number
+---@param duration number | nil
 ---@return self|any
 function class:prop(key, variety, duration)
     local v = self:PROP(key, variety, duration)

@@ -1,4 +1,5 @@
----@return Object|nil
+---@param className string
+---@return string
 function ObjectID(className)
     if (oop._oid[className] == nil) then
         oop._oid[className] = {}
@@ -11,59 +12,63 @@ function ObjectID(className)
     return string.format('%s:%s:%s:%s', className, aid, time._inc or 0, oop._oid[className][aid])
 end
 
+---@class Object:Class
 ---@param className string
 ---@param setting nil|{protect:boolean,static:string,options:table}
 ---@vararg any
----@return Object|nil
+---@return Object
 function Object(className, setting)
     must(type(className) == "string")
     local classType = Class(className)
-    if (type(classType) == "table" and classType._type == "Class") then
-        local _protect = false
-        local _static
-        setting = setting or {}
-        if (type(setting.protect) == "boolean") then
-            _protect = setting.protect
-        end
-        if (setting.static ~= nil) then
-            _static = className .. tostring(setting.static)
-        end
-        if (_static ~= nil) then
-            local cc = oop._static[_static]
-            if (type(cc) == "table" and cc._type == "Object") then
-                return cc
-            end
-        end
-        ---@class Object:Class
-        local o = {
-            ---@private
-            _type = "Object",
-            ---@private
-            _protect = _protect,
-            ---@private
-            _static = _static,
-        }
-        setmetatable(o, { __index = classType })
-        --- static
-        if (_static ~= nil) then
-            oop._static[_static] = o
-        end
-        --- construct
-        do
-            local options = setting.options or {}
-            local construct
-            construct = function(c)
-                local super = getmetatable(c)
-                if super ~= nil and super.__index then
-                    construct(super.__index)
-                end
-                if rawget(c, "construct") then
-                    c.construct(o, options)
-                end
-            end
-            construct(classType)
-        end
-        event.trigger(o, EVENT.Object.Construct, { triggerObject = o })
-        return o
+
+    local checkClass = type(classType) == "table" and classType._type == "Class"
+    if (not checkClass) then
+        stack();
     end
+
+    local _protect = false
+    local _static
+    setting = setting or {}
+    if (type(setting.protect) == "boolean") then
+        _protect = setting.protect
+    end
+    if (setting.static ~= nil) then
+        _static = className .. tostring(setting.static)
+    end
+    if (_static ~= nil) then
+        local cc = oop._static[_static]
+        if (type(cc) == "table" and cc._type == "Object") then
+            return cc
+        end
+    end
+    local o = {
+        ---@private
+        _type = "Object",
+        ---@private
+        _protect = _protect,
+        ---@private
+        _static = _static,
+    }
+    setmetatable(o, { __index = classType })
+    --- static
+    if (_static ~= nil) then
+        oop._static[_static] = o
+    end
+    --- construct
+    do
+        local options = setting.options or {}
+        local construct
+        construct = function(c)
+            local super = getmetatable(c)
+            if super ~= nil and super.__index then
+                construct(super.__index)
+            end
+            if rawget(c, "construct") then
+                c.construct(o, options)
+            end
+        end
+        construct(classType)
+    end
+    event.trigger(o, EVENT.Object.Construct, { triggerObject = o })
+    return o
 end

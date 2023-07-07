@@ -1,5 +1,10 @@
+---@class Class
+---@field _type string
+---@field _className string
+
 ---@type table<string,Class>
 Classes = Classes or {}
+
 
 ---@param name string
 ---@return Class
